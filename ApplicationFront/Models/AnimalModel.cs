@@ -1,16 +1,23 @@
-﻿using Models.Dtos;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ApplicationFront.Models
 {
     public class AnimalModel
     {
-        public List<AnimalDTO> Animals { get; set; }
+        public int AnimalId { get; set; }
 
-        //Pagination
-        public int PageNumber { get; set; }
-        public int PageSize { get; set; }
-        public int TotalCount { get; set; }
-        public int? PagerCount { get; set; }
-
+        [Required(ErrorMessage = "Required")]
+        public string? Name { get; set; }
+        [Required(ErrorMessage = "Required")]
+        public int BreedId { get; set; }
+        [Required(ErrorMessage = "Required")]
+        public DateTime BirthDate { get; set; }
+        [Required(ErrorMessage = "Required")]
+        public string? Sex { get; set; }
+        [Required(ErrorMessage = "Required")]
+        public decimal Price { get; set; }
+        [Required(ErrorMessage = "Required")]
+        public bool Status { get; set; }
+        public string? Photo { get; set; }
     }
 }

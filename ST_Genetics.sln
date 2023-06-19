@@ -5,11 +5,11 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{069C1A0B-2289-4586-93EE-D68AA0F19EA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{976D0382-5756-4032-A098-F66BA48B3132}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{976D0382-5756-4032-A098-F66BA48B3132}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{6F6F31DC-5117-4C8C-96F4-3A577D7C2121}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{6F6F31DC-5117-4C8C-96F4-3A577D7C2121}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationFront", "ApplicationFront\ApplicationFront.csproj", "{A9E1507F-EDF2-4653-B6D1-D964C798B67B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationFront", "ApplicationFront\ApplicationFront.csproj", "{A9E1507F-EDF2-4653-B6D1-D964C798B67B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

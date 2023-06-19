@@ -19,7 +19,7 @@ namespace ApplicationFront.Controllers
         // GET: AnimalController
         public ActionResult Index(int? page)
         {
-            AnimalModel model = new AnimalModel();
+            AnimalsModel model = new AnimalsModel();
             model.PageNumber = (page == null ? 1 : Convert.ToInt32(page));
             model.PageSize = 10;
 
@@ -52,6 +52,29 @@ namespace ApplicationFront.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Create(AnimalModel animal)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            AnimalDTO newAnimal = new()
+            {
+                BreedName = animal.Name
+            };
+
+            CreateAnimal createAnimal = new(_configuration);
+
+            var response = createAnimal.AddAnimal(newAnimal);
+
+            if (response)
+                return RedirectToAction("Index");
+            else
+                return View();
+        }
+
+
 
         // POST: AnimalController/Create
         [HttpPost]
