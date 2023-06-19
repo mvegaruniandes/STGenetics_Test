@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Models.Dtos.AnimalDTO>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to STGenetics</h1>
+    <br />
+    <div class="row row-cols-4 g-3 ">
+        @foreach (var item in Model)
+        {
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                <div class="card">
+                    <div class="aspect-ratio-container">
+                        <img src="@item.Photo" class="card-img-top img-fluid"
+                             alt="@item.Name" />
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-subtitle">
+                            <b>Breed: </b>@item.BreedName - @item.Sex
+                        </p>
+                        <p class="card-text">
+                            <b>Birth Date: </b>@item.BirthDate.ToString("MM-dd-yyyy")
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

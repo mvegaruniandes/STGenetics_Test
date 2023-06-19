@@ -1,0 +1,45 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.logo {
+    width: 70%;
+    padding-top:5%;
+}
+
+.aspect-ratio-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%; /* Establece la relación de aspecto deseada (por ejemplo, 4:3) */
+    text-align: left; /* Alinea la imagen a la izquierda */
+}
+
+    .aspect-ratio-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-left: 0; /* Ajusta el margen izquierdo según sea necesario */
+    }
+
+.gv-container div.dataTables_scrollBody {
+    background: none !important;
+}
