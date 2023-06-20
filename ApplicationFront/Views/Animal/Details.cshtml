@@ -1,0 +1,32 @@
+﻿@model Models.Dtos.AnimalDTO
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to STGenetics</h1>
+    <br />
+    <div class="row row-cols-4 g-3 ">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="card">
+                <div>
+                    <img src="@Model.Photo" class="card-img-top img-fluid"
+                         alt="@Model.Name" />
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Name</h5>
+                    <p class="card-subtitle">
+                        <b>Breed: </b>@Model.BreedName - @Model.Sex
+                    </p>
+                    <p class="card-text">
+                        <b>Birth Date: </b>@Model.BirthDate.ToString("MM-dd-yyyy")
+
+                    </p>
+                    <p><a asp-action="Index" asp-controller="Animal" class="btn btn-warning">Back to the List</a>
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-warning">Back to the Home</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

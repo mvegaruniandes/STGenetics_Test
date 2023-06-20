@@ -1,0 +1,25 @@
+﻿@model AnimalModel
+@{
+    ViewData["Title"] = "Editing";
+}
+
+<div class="card">
+    <div class="card-header">
+        Delete Animal
+    </div>
+    <div class="card-body">
+        <form asp-action="Delete" asp-controller="Animal" method="post">
+
+            <input asp-for="AnimalId" type="hidden" class="form-control">
+
+            <div class="alert alert-danger" role="alert">
+                Are you sure you want to remove: @Html.DisplayTextFor(m => m.Name)?
+            </div>
+
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a asp-action="Index" asp-controller="Animal" class="btn btn-warning">Back to the List</a>
+        </form>
+
+
+    </div>
+</div>

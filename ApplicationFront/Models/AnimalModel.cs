@@ -20,6 +20,7 @@ namespace ApplicationFront.Models
         [Required(ErrorMessage = "Status is required")]
         public bool? Status { get; set; }
         [MaxLength(255)]
+        [Required(ErrorMessage = "Photo is required")]
         public string? Photo { get; set; }
     }
 }

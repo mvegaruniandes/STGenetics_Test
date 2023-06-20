@@ -2,20 +2,25 @@
 using Microsoft.Extensions.Configuration;
 using Models.Data;
 using Models.Dtos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Business.Functions
 {
-    public class UpdateAnimal
+    public class DeleteAnimal
     {
         private DatabaseContext? _dbContext;
         private readonly IConfiguration _configuration;
 
-        public UpdateAnimal(IConfiguration configuration)
+        public DeleteAnimal(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-        public bool EditAnimal(AnimalDTO animal)
+        public bool RemoveAnimal(AnimalDTO animal)
         {
             try
             {
@@ -25,17 +30,10 @@ namespace Business.Functions
 
                 Animal currentAnimal = new()
                 {
-                    AnimalId = animal.AnimalId,
-                    Name = animal.Name,
-                    BreedId = animal.BreedId,
-                    BirthDate = animal.BirthDate,
-                    Sex = animal.Sex,
-                    Price = animal.Price,
-                    Status = animal.Status,
-                    Photo = animal.Photo
+                    AnimalId = animal.AnimalId
                 };
 
-                _dbContext.animal.Update(currentAnimal);
+                _dbContext.animal.Remove(currentAnimal);
                 _dbContext.SaveChanges();
 
                 return true;

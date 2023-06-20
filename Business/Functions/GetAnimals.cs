@@ -14,7 +14,7 @@ namespace Business.Functions
             _configuration = configuration;
         }
 
-        public List<AnimalDTO>? GetAllAnimals()
+        public List<AnimalDTO> GetAllAnimals()
         {
             try
             {
@@ -44,7 +44,42 @@ namespace Business.Functions
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
+                throw;
+            }
+        }
+
+        public AnimalDTO? GetAnimalById(int AnimalId)
+        {
+            try
+            {
+                string? conn = _configuration.GetConnectionString("DbSTGenetics");
+                _dbContext = new DatabaseContext(conn);
+
+                AnimalDTO? animal = new();
+
+                animal = _dbContext.animal
+                   .Join(_dbContext.breed,
+                   a => a.BreedId,
+                   b => b.BreedId,
+                   (a, b) => new AnimalDTO
+                   {
+                       AnimalId = a.AnimalId,
+                       BreedId = b.BreedId,
+                       Name = a.Name,
+                       BirthDate = Convert.ToDateTime(a.BirthDate),
+                       Sex = a.Sex,
+                       Price = Convert.ToDecimal(a.Price),
+                       Status = Convert.ToBoolean(a.Status),
+                       Photo = a.Photo,
+                       BreedName = b.BreedName
+                   }).Where(x => x.AnimalId == AnimalId).FirstOrDefault();
+
+                return animal;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
             }
         }
     }

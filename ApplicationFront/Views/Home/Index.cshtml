@@ -24,6 +24,7 @@
                             <b>Birth Date: </b>@item.BirthDate.ToString("MM-dd-yyyy")
                         </p>
                     </div>
+                    <a asp-action="Details" asp-controller="Animal" class="btn btn-primary btn-sm" asp-route-id="@item.AnimalId">Details</a>
                 </div>
             </div>
         }

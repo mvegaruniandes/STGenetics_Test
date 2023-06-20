@@ -4,7 +4,7 @@ namespace ApplicationFront.Models
 {
     public class AnimalsModel
     {
-        public List<AnimalDTO> Animals { get; set; }
+        public List<AnimalDTO>? Animals { get; set; }
 
         //Pagination
         public int PageNumber { get; set; }
