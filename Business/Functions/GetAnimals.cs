@@ -14,7 +14,7 @@ namespace Business.Functions
             _configuration = configuration;
         }
 
-        public List<AnimalDTO> GetAllAnimals()
+        public List<AnimalDTO>? GetAllAnimals()
         {
             try
             {
@@ -31,10 +31,10 @@ namespace Business.Functions
                        AnimalId = a.AnimalId,
                        BreedId = b.BreedId,
                        Name = a.Name,
-                       BirthDate = a.BirthDate,
+                       BirthDate = Convert.ToDateTime(a.BirthDate),
                        Sex = a.Sex,
-                       Price = a.Price,
-                       Status = a.Status,
+                       Price = Convert.ToDecimal(a.Price),
+                       Status = Convert.ToBoolean(a.Status),
                        Photo = a.Photo,
                        BreedName = b.BreedName
                    }).ToList();
@@ -43,7 +43,8 @@ namespace Business.Functions
             }
             catch (Exception ex)
             {
-                throw ex;
+                Console.WriteLine(ex.Message);
+                return null;
             }
         }
     }

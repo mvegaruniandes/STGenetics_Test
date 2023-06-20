@@ -1,6 +1,8 @@
 ﻿using ApplicationFront.Models;
 using Business.Functions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Models.Data;
 using Models.Dtos;
 
 namespace ApplicationFront.Controllers
@@ -50,20 +52,30 @@ namespace ApplicationFront.Controllers
         // GET: AnimalController/Create
         public ActionResult Create()
         {
+            LoadBreeds();
             return View();
         }
 
         [HttpPost]
+        [Route("Animal/Create")]
         public ActionResult Create(AnimalModel animal)
         {
+            LoadBreeds();
+
             if (!ModelState.IsValid)
                 return View();
 
             AnimalDTO newAnimal = new()
             {
-                BreedName = animal.Name
+                Name = animal.Name,
+                BreedId = animal.BreedId,
+                BirthDate = Convert.ToDateTime(animal.BirthDate),
+                Sex = animal.Sex,
+                Price = Convert.ToDecimal(animal.Price),
+                Status = Convert.ToBoolean(animal.Status),
+                Photo = animal.Photo
             };
-
+            
             CreateAnimal createAnimal = new(_configuration);
 
             var response = createAnimal.AddAnimal(newAnimal);
@@ -72,23 +84,6 @@ namespace ApplicationFront.Controllers
                 return RedirectToAction("Index");
             else
                 return View();
-        }
-
-
-
-        // POST: AnimalController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
 
         // GET: AnimalController/Edit/5
@@ -131,6 +126,20 @@ namespace ApplicationFront.Controllers
             {
                 return View();
             }
+        }
+
+        private void LoadBreeds()
+        {
+            List<BreedDTO> breeds = new List<BreedDTO>();
+
+            GetBreeds getBreeds = new(_configuration);
+
+            breeds = getBreeds.GetAllBreeds();
+            breeds.Add(new BreedDTO { BreedId = 0, BreedName = "Select one.." });
+
+            breeds = breeds.OrderBy(x => x.BreedId).ToList();
+
+            ViewBag.breedsItems = new SelectList(breeds, "BreedId", "BreedName");
         }
     }
 }

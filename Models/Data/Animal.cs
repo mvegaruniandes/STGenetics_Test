@@ -9,13 +9,13 @@ namespace Models.Data
         public int AnimalId { get; set; }
         public string? Name { get; set; }
         [ForeignKey("Breed")]
-        public int BreedId { get; set; }
+        public int? BreedId { get; set; }
         [Required]
         public Breed? Breed { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
         public string? Sex { get; set; }
-        public decimal Price { get; set; }
-        public bool Status { get; set; }
+        public decimal? Price { get; set; }
+        public bool? Status { get; set; }
         public string? Photo { get; set; }
     }
 }
